@@ -36,16 +36,16 @@ function showUploadPrompt() {
 
 // === GALLERY (STATIC) ===
 const staticImages = [
-    { src: 'حمود (1).jpg', title: 'حمود (1)' },
-    { src: 'حمود (2).jpg', title: 'حمود (2)' },
-    { src: 'كيوجيرو و اكازا.jpg', title: 'كيوجيرو و اكازا' },
-    { src: 'سينكو.jpg', title: 'سينكو' },
-    { src: 'رسم على ايباد.jpg', title: 'رسم على ايباد' },
-    { src: 'ناروتو.jpg', title: 'ناروتو' },
-    { src: 'بسة فانجوخ.jpg', title: 'بسة فانجوخ' },
-    { src: 'رسمة جمجمة.jpg', title: 'رسمة جمجمة' },
-    { src: 'ميناتو زجاج.jpg', title: 'ميناتو زجاج' },
-    { src: 'ساندي.jpg', title: 'ساندي' }
+    { src: 'حمود (1).jpg', title: '' },
+    { src: 'حمود (2).jpg', title: ' رسم بورتريه بالألوان الخشبية' },
+    { src: 'كيوجيرو و اكازا.jpg', title: 'رسمة كيوجيرو و أكازا من أنمي Demon Slayer ' },
+    { src: 'سينكو.jpg', title: 'رسم شخصية سينكو من أنمي Dr.Stone' },
+    { src: 'رسم على ايباد.jpg', title: 'رسم على اللآيباد' },
+    { src: 'ناروتو.jpg', title: 'رسم ناروتو على الزجاج' },
+    { src: 'بسة فانجوخ.jpg', title: 'لوحة قطة بأسلوب فانجوخ بألوان Oil Pastel' },
+    { src: 'رسمة جمجمة.jpg', title: ' لوحة جمجمة بألوان Oil Pastel' },
+    { src: 'ميناتو زجاج.jpg', title: 'رسم شخصية ميناتو على الزجاج' },
+    { src: 'ساندي.jpg', title: 'رسم بورتريه بالألوان الخشبية' }
 ];
 
 function displayStaticGallery(images) {
