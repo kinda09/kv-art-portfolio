@@ -34,21 +34,27 @@ function showUploadPrompt() {
     }
 }
 
-// === GALLERY ===
-async function fetchGallery() {
-    const res = await fetch(`${API_BASE}/api/gallery`);
-    const images = await res.json();
-    return images;
-}
+// === GALLERY (STATIC) ===
+const staticImages = [
+    { src: 'حمود (1).jpg', title: 'حمود (1)' },
+    { src: 'حمود (2).jpg', title: 'حمود (2)' },
+    { src: 'كيوجيرو و اكازا.jpg', title: 'كيوجيرو و اكازا' },
+    { src: 'سينكو.jpg', title: 'سينكو' },
+    { src: 'رسم على ايباد.jpg', title: 'رسم على ايباد' },
+    { src: 'ناروتو.jpg', title: 'ناروتو' },
+    { src: 'بسة فانجوخ.jpg', title: 'بسة فانجوخ' },
+    { src: 'رسمة جمجمة.jpg', title: 'رسمة جمجمة' },
+    { src: 'ميناتو زجاج.jpg', title: 'ميناتو زجاج' },
+    { src: 'ساندي.jpg', title: 'ساندي' }
+];
 
-function displayGallery(images) {
+function displayStaticGallery(images) {
     galleryGrid.innerHTML = '';
     if (!images || images.length === 0) {
         galleryGrid.innerHTML = `
             <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: #666;">
                 <i class="fas fa-images" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
                 <h3>No artwork uploaded yet</h3>
-                <p>Upload your first piece of artwork to get started!</p>
             </div>
         `;
         return;
@@ -58,55 +64,19 @@ function displayGallery(images) {
         galleryItem.className = 'gallery-item';
         galleryItem.innerHTML = `
             <div class="gallery-item-image">
-                <img src="${API_BASE}${item.url}" alt="${item.title || 'Artwork'}" loading="lazy">
-                <div class="gallery-item-overlay"></div>
+                <img src="${item.src}" alt="${item.title}" loading="lazy">
             </div>
             <div class="gallery-item-info">
-                <h3>${item.title || 'Untitled'}</h3>
-                <p>${item.description || 'No description available'}</p>
+                <h3>${item.title}</h3>
             </div>
         `;
-        // Modal
-        const imageContainer = galleryItem.querySelector('.gallery-item-image');
-        imageContainer.addEventListener('click', (e) => {
-            if (isUploader && e.target.classList.contains('delete-btn')) return;
-            openModal({
-                src: `${API_BASE}${item.url}`,
-                title: item.title,
-                description: item.description,
-                uploadDate: item.uploadDate
-            });
-        });
-        // Add delete button if uploader
-        if (isUploader) {
-            const overlay = galleryItem.querySelector('.gallery-item-overlay');
-            const deleteBtn = document.createElement('button');
-            deleteBtn.className = 'delete-btn';
-            deleteBtn.title = 'Delete this artwork';
-            deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
-            deleteBtn.onclick = async (e) => {
-                e.stopPropagation();
-                if (!confirm('Are you sure you want to delete this artwork? This action cannot be undone.')) return;
-                try {
-                    const res = await fetch(`${API_BASE}/api/delete/${item.id}`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ password: window.__UPLOAD_PASSWORD || '' })
-                    });
-                    const data = await res.json();
-                    if (!res.ok) throw new Error(data.error || 'Delete failed');
-                    // Refresh gallery
-                    const images = await fetchGallery();
-                    displayGallery(images);
-                } catch (err) {
-                    alert('Delete failed: ' + err.message);
-                }
-            };
-            overlay.appendChild(deleteBtn);
-        }
         galleryGrid.appendChild(galleryItem);
     });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    displayStaticGallery(staticImages);
+});
 
 // === UPLOAD ===
 async function handleImageUpload() {
