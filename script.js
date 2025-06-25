@@ -70,6 +70,12 @@ function displayStaticGallery(images) {
                 <h3>${item.title}</h3>
             </div>
         `;
+        // Make image clickable to open modal
+        const img = galleryItem.querySelector('img');
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', () => {
+            openModal({ src: item.src, title: item.title });
+        });
         galleryGrid.appendChild(galleryItem);
     });
 }
@@ -183,14 +189,11 @@ function showUploadStatus(message, type) {
 
 // Open image modal
 function openModal(item) {
-    modalImage.src = item.src;
-    modalCaption.innerHTML = `
-        <h3>${item.title || 'Untitled'}</h3>
-        <p>${item.description || 'No description available'}</p>
-        <small>Uploaded on ${new Date(item.uploadDate).toLocaleDateString()}</small>
-    `;
     modal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
+    modalImage.src = item.src;
+    modalCaption.textContent = item.title;
+    modalImage.style.transform = 'scale(1)';
+    modalImage.setAttribute('data-zoom', '1');
 }
 
 // Close modal
@@ -318,4 +321,26 @@ if (hamburgerMenu && navLinks) {
             }
         });
     });
-} 
+}
+
+// Zoom in/out with mouse wheel
+modalImage.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    let zoom = parseFloat(modalImage.getAttribute('data-zoom')) || 1;
+    if (e.deltaY < 0) {
+        zoom = Math.min(zoom + 0.1, 3); // max 3x
+    } else {
+        zoom = Math.max(zoom - 0.1, 1); // min 1x
+    }
+    modalImage.style.transform = `scale(${zoom})`;
+    modalImage.setAttribute('data-zoom', zoom);
+});
+
+// Close modal when clicking outside the image
+modal.onclick = function(e) {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+        modalImage.src = '';
+        modalCaption.textContent = '';
+    }
+}; 
