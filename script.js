@@ -34,19 +34,6 @@ function showUploadPrompt() {
     }
 }
 
-// Hide upload section by default
-if (uploadSection) {
-    uploadSection.style.display = 'none';
-    // Add a button to show upload prompt
-    const showUploadBtn = document.createElement('button');
-    showUploadBtn.textContent = 'Uploader Login';
-    showUploadBtn.className = 'upload-button';
-    showUploadBtn.style.margin = '2rem auto 0';
-    showUploadBtn.style.display = 'block';
-    showUploadBtn.onclick = showUploadPrompt;
-    uploadSection.parentNode.insertBefore(showUploadBtn, uploadSection);
-}
-
 // === GALLERY ===
 async function fetchGallery() {
     const res = await fetch(`${API_BASE}/api/gallery`);
