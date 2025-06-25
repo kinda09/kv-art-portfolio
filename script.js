@@ -36,7 +36,7 @@ function showUploadPrompt() {
 
 // === GALLERY (STATIC) ===
 const staticImages = [
-    { src: 'حمود (1).jpg', title: '' },
+    { src: 'حمود (1).jpg', title: 'رسم بورتريه بالألوان الخشبية' },
     { src: 'حمود (2).jpg', title: ' رسم بورتريه بالألوان الخشبية' },
     { src: 'كيوجيرو و اكازا.jpg', title: 'رسمة كيوجيرو و أكازا من أنمي Demon Slayer ' },
     { src: 'سينكو.jpg', title: 'رسم شخصية سينكو من أنمي Dr.Stone' },
