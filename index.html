@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K.V Art Page - Artist Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>K.V Art Page</h1>
+                <span>Artist</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#upload">Upload</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="hamburger-menu" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <img src="cat for project.png" alt="Cute Cat Sticker" class="cat-sticker">
+                <div class="hero-text-block">
+                    <h1>Welcome to My Art Gallery</h1>
+                    <p class="hero-subtitle">A place where the only limit is your imagination</p>
+                    <a href="#gallery" class="cta-button">View Gallery</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="container">
+                <h2>My Artwork</h2>
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- Images will be loaded here dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <section id="upload" class="admin-section">
+            <div class="container">
+                <h2>Upload New Artwork</h2>
+                <div class="upload-form">
+                    <div class="form-group">
+                        <label for="imageUpload">Select Image:</label>
+                        <input type="file" id="imageUpload" accept="image/*" multiple>
+                    </div>
+                    <div class="form-group">
+                        <label for="imageTitle">Title (optional):</label>
+                        <input type="text" id="imageTitle" placeholder="Enter artwork title">
+                    </div>
+                    <div class="form-group">
+                        <label for="imageDescription">Description (optional):</label>
+                        <textarea id="imageDescription" placeholder="Enter artwork description"></textarea>
+                    </div>
+                    <button type="button" id="uploadBtn" class="upload-button">
+                        <i class="fas fa-upload"></i> Upload Artwork
+                    </button>
+                </div>
+                <div id="uploadStatus" class="upload-status"></div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>Get in Touch</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Let's Connect</h3>
+                        <p>Interested in my artwork? Want to purchase a piece? Feel free to reach out!</p>
+                        <div class="contact-methods">
+                            <a href="mailto:majidasabri82@gmail.com" class="email-button">
+                                <i class="fas fa-envelope"></i>
+                                Send Email
+                            </a>
+                            <div class="email-fallback">
+                                <p>Or copy my email: <span class="email-text" onclick="copyEmail()">majidasabri82@gmail.com</span> <i class="fas fa-copy copy-icon"></i></p>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <h4>Follow My Art Journey</h4>
+                            <div class="social-buttons">
+                                <a href="https://youtube.com/@karmenvoltaris23?si=WPSwELpcApWCjpFr" class="social-button youtube-button" target="_blank">
+                                    <i class="fab fa-youtube"></i>
+                                    YouTube
+                                </a>
+                                <a href="https://www.instagram.com/majidasabri82_arts/profilecard/?igsh=Ymx6OWFiMXgwMXcy" class="social-button instagram-button" target="_blank">
+                                    <i class="fab fa-instagram"></i>
+                                    Instagram
+                                </a>
+                            </div>
+                            <div class="instagram-qr-block">
+                                <img src="instagram-qr.png" alt="Instagram QR Code" class="instagram-qr">
+                                <div class="qr-caption">Scan to follow on Instagram</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Kinda. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div class="modal-caption" id="modalCaption"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
