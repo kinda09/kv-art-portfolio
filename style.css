@@ -960,19 +960,25 @@ nav {
 }
 
 .close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    font-size: 2.5rem;
+    color: #fff;
+    background: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1101;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.2s;
 }
 
-.close:hover {
-    color: #e74c3c;
-    transform: scale(1.1) rotate(90deg);
+.close:hover, .close:active {
+    background: rgba(0,0,0,0.8);
 }
 
 .modal-caption {
@@ -1107,6 +1113,13 @@ footer {
     .hero-subtitle {
         margin-left: 0;
         text-align: center;
+    }
+    .modal .close {
+        top: 10px;
+        right: 10px;
+        font-size: 2rem;
+        width: 40px;
+        height: 40px;
     }
 }
 
